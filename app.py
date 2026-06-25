@@ -3,6 +3,10 @@ from config import BOT_TOKEN
 from modules.telegram_bot import register_handlers
 
 def main():
+    if not BOT_TOKEN:
+        print("❌ BOT_TOKEN not found. Check your .env file.")
+        return
+
     app = Application.builder().token(BOT_TOKEN).build()
 
     register_handlers(app)
